@@ -5,8 +5,8 @@ class MortgageForm extends Component {
     constructor() {
         super();
         this.state = {
-            personalSalary: null,
-            partnerSalary: null
+            personalSalary: '',
+            partnerSalary: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,10 +22,17 @@ class MortgageForm extends Component {
        event.preventDefault();
        const personalSalary = Number(this.state.personalSalary);
        const partnerSalary = Number(this.state.partnerSalary);
+       if (!personalSalary) {
+           return;
+       }
        this.props.handleSubmitForm({
            personalSalary: personalSalary, 
            partnerSalary: partnerSalary}
         );
+        // this.setState({
+        //     personalSalary: '',
+        //     partnerSalary: ''
+        // })
     }
     
     render() {

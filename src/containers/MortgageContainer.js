@@ -7,15 +7,15 @@ class MortgageContainer extends Component {
    constructor() {
       super()
       this.state = {
-         combinedSalary: ''
+         availableMortgage: ''
       }
       this.handleSubmitForm = this.handleSubmitForm.bind(this);
    }
 
    handleSubmitForm(submittedForm) {
-      const result = submittedForm.personalSalary + submittedForm.partnerSalary;
+      const result = (submittedForm.personalSalary + submittedForm.partnerSalary) * 3;
       this.setState({
-         combinedSalary: result
+         availableMortgage: result
       })
    }
 
@@ -24,7 +24,7 @@ class MortgageContainer extends Component {
             <>
                 <h3>Mortgage Calculator</h3>
                 <MortgageForm handleSubmitForm={this.handleSubmitForm}/>
-                <MortgageDisplay/>
+                <MortgageDisplay availableMortgage={this.state.availableMortgage}/>
             </>
         )
     }
