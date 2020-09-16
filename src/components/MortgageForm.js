@@ -38,7 +38,9 @@ class MortgageForm extends Component {
         );
         this.setState({
             personalSalary: '',
-            partnerSalary: ''
+            partnerSalary: '',
+            deposit: '',
+            monthlyOutgoings: ''
         })
     }
 
