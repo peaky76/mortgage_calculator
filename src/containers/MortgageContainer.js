@@ -13,7 +13,7 @@ class MortgageContainer extends Component {
    }
 
    handleSubmitForm(submittedForm) {
-      const result = (submittedForm.personalSalary + submittedForm.partnerSalary) * 3;
+      const result = (submittedForm.personalSalary + submittedForm.partnerSalary) * 3 + submittedForm.deposit;
       this.setState({
          availableMortgage: result
       })
