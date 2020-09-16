@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MortgageForm from '../components/MortgageForm';
 import MortgageDisplay from '../components/MortgageDisplay';
+import MortgageList from '../components/MortgageList';
 
 class MortgageContainer extends Component {
 
@@ -41,6 +42,7 @@ class MortgageContainer extends Component {
             <h3>Mortgage Calculator</h3>
             <MortgageForm handleSubmitForm={this.handleSubmitForm} />
             <MortgageDisplay availableMortgage={this.state.currentMortgage.mortgage} handleMortgageSave={this.handleMortgageSave} />
+            <MortgageList savedMortgages={this.state.savedMortgages} />
          </>
       )
    }
