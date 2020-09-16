@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const MortgageDisplay = ({availableMortgage}) => {
-   if (availableMortgage) {
-   return ( 
-      <>
-         <h5>We can offer you a mortgage of £{availableMortgage}</h5>
-      </>
-    );
+class MortgageDisplay extends Component {
+   constructor() {
+      super();
+      this.handleSave = this.handleSave.bind(this);
    }
-   return null;
+
+   handleSave(event) {
+      event.preventDefault();
+      this.props.handleMortgageSave(true);
+   }
+
+   render() {
+      if (this.props.availableMortgage)
+         return (
+
+            <form onSubmit={this.handleSave}>
+               <h5>We can offer you a mortgage of £{this.props.availableMortgage}</h5>
+               <input type="submit" value="Save" />
+            </form>
+         )
+      return null;
+   }
 }
- 
+
+
 export default MortgageDisplay;
