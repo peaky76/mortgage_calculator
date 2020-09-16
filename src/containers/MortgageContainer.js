@@ -4,11 +4,26 @@ import MortgageDisplay from '../components/MortgageDisplay';
 
 class MortgageContainer extends Component {
 
+   constructor() {
+      super()
+      this.state = {
+         combinedSalary: ''
+      }
+      this.handleSubmitForm = this.handleSubmitForm.bind(this);
+   }
+
+   handleSubmitForm(submittedForm) {
+      const result = submittedForm.personalSalary + submittedForm.partnerSalary;
+      this.setState({
+         combinedSalary: result
+      })
+   }
+
     render() {
         return (
             <>
                 <h3>Mortgage Calculator</h3>
-                <MortgageForm/>
+                <MortgageForm handleSubmitForm={this.handleSubmitForm}/>
                 <MortgageDisplay/>
             </>
         )
