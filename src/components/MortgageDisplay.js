@@ -17,7 +17,7 @@ class MortgageDisplay extends Component {
 
             <form onSubmit={this.handleSave}>
                <h5>We can offer you a mortgage of £{this.props.availableMortgage}</h5>
-               <input type="submit" value="Save" />
+               <input className="button" type="submit" value="Save" />
             </form>
          )
       return null;

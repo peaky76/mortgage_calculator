@@ -39,7 +39,7 @@ class MortgageContainer extends Component {
    render() {
       return (
          <>
-            <h3>Mortgage Calculator</h3>
+            <h3 className="headline">Mortgage Calculator</h3>
             <MortgageForm handleSubmitForm={this.handleSubmitForm} />
             <MortgageDisplay availableMortgage={this.state.currentMortgage.mortgage} handleMortgageSave={this.handleMortgageSave} />
             <MortgageList savedMortgages={this.state.savedMortgages} />
