@@ -7,7 +7,6 @@ class MortgageContainer extends Component {
    constructor() {
       super()
       this.state = {
-         availableMortgage: '',
          currentMortgage: {},
          savedMortgages: []
       }
@@ -17,12 +16,16 @@ class MortgageContainer extends Component {
 
    handleSubmitForm(submittedForm) {
       submittedForm.id = Date.now();
-      const basicMortgage = (submittedForm.personalSalary + submittedForm.partnerSalary) * 3;
-      const adjustedMortgage = (basicMortgage + submittedForm.deposit) - submittedForm.monthlyOutgoings;
+      submittedForm.mortgage = this.calculate(submittedForm);
       this.setState({
-         availableMortgage: adjustedMortgage,
          currentMortgage: submittedForm
       })
+   }
+
+   calculate(formData) {
+      const basicMortgage = (formData.personalSalary + formData.partnerSalary) * 3;
+      const adjustedMortgage = (basicMortgage + formData.deposit) - formData.monthlyOutgoings;
+      return adjustedMortgage;
    }
 
    handleMortgageSave(bool) {
@@ -37,7 +40,7 @@ class MortgageContainer extends Component {
          <>
             <h3>Mortgage Calculator</h3>
             <MortgageForm handleSubmitForm={this.handleSubmitForm} />
-            <MortgageDisplay availableMortgage={this.state.availableMortgage} handleMortgageSave={this.handleMortgageSave} />
+            <MortgageDisplay availableMortgage={this.state.currentMortgage.mortgage} handleMortgageSave={this.handleMortgageSave} />
          </>
       )
    }
